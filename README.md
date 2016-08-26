@@ -1,0 +1,2 @@
+# localavro
+avro for scala
