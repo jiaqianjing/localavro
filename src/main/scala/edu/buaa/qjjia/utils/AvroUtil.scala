@@ -15,15 +15,16 @@ import org.apache.avro.specific.SpecificDatumWriter
 /**
   * Created by Administrator on 2016/8/26.
   */
-
+class SvcLogAvroUtil
 object SvcLogAvroUtil {
   val baos: ByteArrayOutputStream = new ByteArrayOutputStream()
 
-    val parser: Schema.Parser = new Schema.Parser()
-    val schema: Schema = parser.parse(new File("svc.avsc"))
+  val parser: Schema.Parser = new Schema.Parser()
+  val schema: Schema = parser.parse(new File("svc.avsc"))
   val encoder: Encoder = EncoderFactory.get.binaryEncoder(baos, null)
   val writer: DatumWriter[SvcLog] = new ReflectDatumWriter(schema)
-  //  val writer: DatumWriter[SvcLog] = new ReflectDatumWriter(new Schema.Parser().parse(this.getClass.getResourceAsStream("/svc.avsc")))
+//  println(getClass.getName)
+//  val writer: DatumWriter[SvcLog] = new ReflectDatumWriter(new Schema.Parser().parse(classOf[SvcLogAvroUtil].getResourceAsStream("svc.avsc")))
 
   /**
     * Do serialize.
